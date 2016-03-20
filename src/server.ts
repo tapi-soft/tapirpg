@@ -1,9 +1,11 @@
 /// <reference path="./typings/main.d.ts" />
 
-import http = require('http');
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Hello World");
-}).listen(30000);
+app.use(express.static(__dirname + '/../client'));
 
+http.listen(30000, function() {
+    console.log("server listen");
+});
