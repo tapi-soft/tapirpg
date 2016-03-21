@@ -9,6 +9,10 @@ class MainDraw {
     }
 
     private draw(context: any): void {
+        this.drawMap(context);
+    }
+
+    private drawMap(context: any): void {
         for (var y = 0; y < 20;  y++) {
             for (var x = 0; x < 20; x++) {
                 context.drawImage(
