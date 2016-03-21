@@ -6,6 +6,7 @@ $(function() {
     var context = canvas.getContext("2d");
     var socket = io.connect();
     var mainDraw;
+    var myself;
 
     window.onload = function() {
         init();
@@ -16,6 +17,7 @@ $(function() {
 
     function init() {
         mainDraw = new MainDraw();
+        myself = new Myself();
     }
 
     function draw() {
@@ -28,6 +30,6 @@ $(function() {
         var rect = e.target.getBoundingClientRect();
         var mousex = Math.floor(e.clientX - rect.left);
         var mousey = Math.floor(e.clientY - rect.top);
-        console.log(mousex+" "+mousey);
+        myself.clickProcess(mousex, mousey);
     });
 })
