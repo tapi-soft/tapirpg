@@ -23,4 +23,11 @@ $(function() {
         context.fillRect(0, 0, canvas.width, canvas.height);
         mainDraw.draw(context);
     }
+
+    $("canvas").mousedown(function(e) {
+        var rect = e.target.getBoundingClientRect();
+        var mousex = e.clientX - rect.left;
+        var mousey = e.clientY - rect.top;
+        console.log(mousex+" "+mousey);
+    });
 })
