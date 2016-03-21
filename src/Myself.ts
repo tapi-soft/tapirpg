@@ -1,3 +1,5 @@
+/// <reference path="./main.d.ts"/>
+
 class Myself {
     private x: number;
     private y: number;
