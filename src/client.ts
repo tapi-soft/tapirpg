@@ -11,6 +11,7 @@ $(function() {
     window.onload = function() {
         init();
         setInterval(function() {
+            update();
             draw();
         }, 16);
     }
@@ -24,6 +25,10 @@ $(function() {
         context.fillStyle="rgba(255,255,255,1)";
         context.fillRect(0, 0, canvas.width, canvas.height);
         mainDraw.draw(context);
+    }
+
+    function update() {
+        myself.update();
     }
 
     $("canvas").mousedown(function(e) {

@@ -26,8 +26,8 @@ class MainDraw {
             for (var x = 0; x < 20; x++) {
                 context.drawImage(
                     this.imageMap,
-                    x * this.imageMap.width,
-                    y * this.imageMap.height);
+                    x * this.imageMap.width + this.getBasePosX(),
+                    y * this.imageMap.height + this.getBasePosY());
             }
         }
     }
@@ -35,7 +35,12 @@ class MainDraw {
     private drawMyself(context: any): void {
         context.drawImage(
             this.imageChara[this.myself.getDire()],
-            1024 / 2 - this.imageChara[0].width / 2,
-            600 / 2 - this.imageChara[0].height / 2);
+            this.getCenterPosX() - this.imageChara[0].width / 2,
+            this.getCenterPosY() - this.imageChara[0].height / 2);
     }
+
+    public getCenterPosX(): number { return 1024 / 2; }
+    public getCenterPosY(): number { return 600 / 2; }
+    public getBasePosX(): number { return this.getCenterPosX() - this.myself.getX(); }
+    public getBasePosY(): number { return this.getCenterPosY() - this.myself.getY(); }
 }

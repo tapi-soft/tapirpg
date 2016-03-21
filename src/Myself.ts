@@ -13,9 +13,22 @@ class Myself {
         this.dire = 0;
     }
 
+    public update(): void {
+        var dx = this.targetX - this.x;
+        var dy = this.targetY - this.y;
+        if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) { return; }
+        var len = Math.sqrt(dx * dx + dy * dy);
+        if (len >= 5) {
+            dx *= 5 / len;
+            dy *= 5 / len;
+        }
+        this.x += dx;
+        this.y += dy;
+    }
+
     public clickProcess(mousex: number, mousey: number): void {
-        this.targetX = this.x + mousex - (1024 / 2 - 50 / 2);
-        this.targetY = this.y + mousey - (600 / 2 - 100 / 2);
+        this.targetX = this.x + mousex - (1024 / 2);
+        this.targetY = this.y + mousey - (600 / 2);
         this.dire = this.calcDire();
     }
 
@@ -38,5 +51,7 @@ class Myself {
         return 0;
     }
 
+    public getX(): number { return this.x; }
+    public getY(): number { return this.y; }
     public getDire(): number { return this.dire; }
 }
