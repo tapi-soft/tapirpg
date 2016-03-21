@@ -1,10 +1,13 @@
 /// <reference path="./typings/main.d.ts" />
+/// <reference path="./main.d.ts" />
 
 class MainDraw {
     private imageMap;
     private imageChara = [];
+    private myself: Myself;
 
-    constructor() {
+    constructor(public _myself: Myself) {
+        this.myself = _myself;
         this.imageMap = new Image();
         this.imageMap.src = "image/map/map1.png";
         for (var n = 0; n < 8; n++) {
@@ -31,7 +34,7 @@ class MainDraw {
 
     private drawMyself(context: any): void {
         context.drawImage(
-            this.imageChara[0],
+            this.imageChara[this.myself.getDire()],
             1024 / 2 - this.imageChara[0].width / 2,
             600 / 2 - this.imageChara[0].height / 2);
     }

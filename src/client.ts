@@ -16,8 +16,8 @@ $(function() {
     }
 
     function init() {
-        mainDraw = new MainDraw();
         myself = new Myself();
+        mainDraw = new MainDraw(myself);
     }
 
     function draw() {

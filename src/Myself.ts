@@ -16,10 +16,10 @@ class Myself {
     public clickProcess(mousex: number, mousey: number): void {
         this.targetX = this.x + mousex - (1024 / 2 - 50 / 2);
         this.targetY = this.y + mousey - (600 / 2 - 100 / 2);
-        this.dire = this.getDire();
+        this.dire = this.calcDire();
     }
 
-    public getDire(): number {
+    public calcDire(): number {
         var x1: number = this.x;
         var y1: number = this.y;
         var x2: number = this.targetX;
@@ -37,4 +37,6 @@ class Myself {
         if (degree > 337 || degree <= 22) { return 6; }
         return 0;
     }
+
+    public getDire(): number { return this.dire; }
 }
