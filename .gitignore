@@ -2,3 +2,4 @@ node_modules
 *.swp
 server/server.js
 client/js/client.js
+src/typings
