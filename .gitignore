@@ -1,5 +1,5 @@
 node_modules
 *.swp
 server/server.js
-client/js/client.js
+client/js/*.js
 src/typings
