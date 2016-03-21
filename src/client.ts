@@ -26,8 +26,8 @@ $(function() {
 
     $("canvas").mousedown(function(e) {
         var rect = e.target.getBoundingClientRect();
-        var mousex = e.clientX - rect.left;
-        var mousey = e.clientY - rect.top;
+        var mousex = Math.floor(e.clientX - rect.left);
+        var mousey = Math.floor(e.clientY - rect.top);
         console.log(mousex+" "+mousey);
     });
 })
