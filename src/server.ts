@@ -7,6 +7,7 @@ var io2 = require('socket.io')(http);
 
 const MAX_PLAYER = 100;
 var useId = [];
+var serverPlayer = [];
 
 app.use(express.static(__dirname + '/../client'));
 
@@ -24,6 +25,12 @@ io2.sockets.on('connection', function(socket) {
 
     setInterval(function() {
         var emitData = new EmitData();
+        for (var i = 0; i < MAX_PLAYER; i++) {
+            if (useId[i] == 0) { continue; }
+            var playerData = new EmitPlayerData();
+            playerData.setData(serverPlayer[i]);
+            emitData.addPlayerData(playerData);
+        }
         socket.emit('update', emitData);
     }, 1000);
 });
@@ -40,6 +47,7 @@ setInterval(function() {
 function init() {
     for (var i = 0; i < MAX_PLAYER; i++) {
         useId[i] = 0;
+        serverPlayer[i] = new ServerPlayer();
     }
 }
 

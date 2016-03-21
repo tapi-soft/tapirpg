@@ -1,11 +1,19 @@
 /// <reference path="./main.d.ts" />
 
 class EmitData {
+    private playerNum: number;
     private emitPlayerData = [];
 
     constructor() {
-        for (var i = 0; i < 100; i++) {
-            this.emitPlayerData[i] = new EmitPlayerData();
-        }
+        this.playerNum = 0;
+    }
+
+    public addPlayerData(data: EmitPlayerData) {
+        this.emitPlayerData[this.playerNum] = data;
+        this.playerNum++;
+    }
+
+    public getEmitPlayerData(n: number): EmitPlayerData {
+        return this.emitPlayerData[n];
     }
 }
