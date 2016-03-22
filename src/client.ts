@@ -7,6 +7,7 @@ $(function() {
     var mainDraw;
     var myself;
     var player;
+    var monster;
 
     window.onload = function() {
         init();
@@ -19,7 +20,8 @@ $(function() {
     function init() {
         myself = new ClientMyself();
         player = new ClientPlayerList();
-        mainDraw = new MainDraw(myself, player);
+        monster = new ClientMonsterList();
+        mainDraw = new MainDraw(myself, player, monster);
     }
 
     function draw() {
@@ -31,6 +33,7 @@ $(function() {
     function update() {
         myself.update();
         player.update();
+        monster.update();
     }
 
     $("canvas").mousedown(function(e) {
@@ -51,6 +54,15 @@ $(function() {
                     player.connect(i, data.emitPlayerData[i]);
                 }
                 player.getPlayerData(i).setTarget(data.emitPlayerData[i]);
+            }
+        }
+        for (var i = 0; i < 100; i++) {
+            if (data.emitMonsterData[i]) {
+                if (monster.isConnect(i) == 0) {
+                    monster.connect(i, data.emitMonsterData[i]);
+                }
+                monster.getMonster(i).setTarget(data.emitMonsterData[i]);
+                console.log(data.emitMonsterData[i]);
             }
         }
     });

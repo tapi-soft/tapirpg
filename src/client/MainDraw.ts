@@ -3,17 +3,24 @@
 class MainDraw {
     private imageMap;
     private imageChara = [];
+    private imageMonster = [];
     private myself: ClientMyself;
     private player: ClientPlayerList;
+    private monster: ClientMonsterList;
 
-    constructor(public _myself: ClientMyself, public _player: ClientPlayerList) {
+    constructor(public _myself: ClientMyself, public _player: ClientPlayerList, public _monster: ClientMonsterList) {
         this.myself = _myself;
         this.player = _player;
+        this.monster = _monster;
         this.imageMap = new Image();
         this.imageMap.src = "image/map/map1.png";
         for (var n = 0; n < 8; n++) {
             this.imageChara[n] = new Image();
-            this.imageChara[n].src = "image/chara/chara1_"+n+".png";
+            this.imageChara[n].src = "image/chara/chara1_" + n + ".png";
+        }
+        for (var n = 0; n < 8; n++) {
+            this.imageMonster[n] = new Image();
+            this.imageMonster[n].src = "image/monster/monster1_" + n + ".png";
         }
     }
 
@@ -21,6 +28,7 @@ class MainDraw {
         this.drawMap(context);
         this.drawMyself(context);
         this.drawPlayer(context);
+        this.drawMonster(context);
     }
 
     private drawMap(context: any): void {
@@ -51,6 +59,18 @@ class MainDraw {
                 this.imageChara[playerData.getDire()],
                 Math.floor(this.getBasePosX() - this.imageChara[0].width / 2 + playerData.getX()),
                 Math.floor(this.getBasePosY() - this.imageChara[0].height / 2 + playerData.getY())
+            );
+        }
+    }
+
+    private drawMonster(context: any): void {
+        for (var i = 0; i < 100; i++) {
+            if  (this.monster.isConnect(i) == 0) { continue; }
+            var monsterData = this.monster.getMonster(i);
+            context.drawImage(
+                this.imageMonster[monsterData.getDire()],
+                Math.floor(this.getBasePosX() - this.imageMonster[0].width / 2 + monsterData.getX()),
+                Math.floor(this.getBasePosY() - this.imageMonster[0].height / 2 + monsterData.getY())
             );
         }
     }
