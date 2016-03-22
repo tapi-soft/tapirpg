@@ -6,11 +6,11 @@ class EmitPlayerData extends EmitCharacterData {
     }
 
     public setData(data: ServerPlayer): void {
-        this.setX(data.getX());
-        this.setY(data.getY());
-        this.setTargetX(data.getTargetX());
-        this.setTargetY(data.getTargetY());
-        this.setDire(data.getDire());
+        this.x = data.getX();
+        this.y = data.getY();
+        this.targetX = data.getTargetX();
+        this.targetY = data.getTargetY();
+        this.dire = data.getDire()
     }
 }
     

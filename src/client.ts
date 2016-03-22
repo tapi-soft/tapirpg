@@ -36,4 +36,13 @@ $(function() {
         var mousey = Math.floor(e.clientY - rect.top);
         myself.clickProcess(mousex, mousey);
     });
+
+    socket.on('update', function(data) {
+        console.log(data);
+        for (var i = 0; i < 100; i++) {
+            if (data.emitPlayerData[i]) {
+                console.log(data.emitPlayerData[i]);
+            }
+        }
+    });
 })
