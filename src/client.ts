@@ -38,7 +38,6 @@ $(function() {
     });
 
     socket.on('update', function(data) {
-        console.log(data);
         for (var i = 0; i < 100; i++) {
             if (data.emitPlayerData[i]) {
                 console.log(data.emitPlayerData[i]);
