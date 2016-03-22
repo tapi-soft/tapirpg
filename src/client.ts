@@ -35,6 +35,10 @@ $(function() {
         var mousex = Math.floor(e.clientX - rect.left);
         var mousey = Math.floor(e.clientY - rect.top);
         myself.changeTarget(mousex, mousey);
+        socket.emit('move', {
+            targetX: myself.getTargetX(), 
+            targetY: myself.getTargetY()
+        });
     });
 
     socket.on('update', function(data) {

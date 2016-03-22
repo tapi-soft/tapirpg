@@ -55,5 +55,7 @@ class ClientCharacter {
 
     public getX(): number { return this.x; }
     public getY(): number { return this.y; }
+    public getTargetX(): number { return this.targetX; }
+    public getTargetY(): number { return this.targetY; }
     public getDire(): number { return this.dire; }
 }
