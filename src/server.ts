@@ -70,7 +70,9 @@ function init() {
         useMonsterId[i] = 0;
         serverMonster[i] = new ServerMonster();
     }
-    createMonster();
+    for (var i = 0; i < 10; i++) {
+        createMonster();
+    }
 }
 
 function update() {
