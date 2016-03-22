@@ -21,6 +21,7 @@ io2.sockets.on('connection', function(socket) {
     } else {
         console.log("id: "+id+" connected");
         usePlayerId[id] = 1;
+        serverPlayer[id].init();
     }
 
     socket.on('disconnect', function() {

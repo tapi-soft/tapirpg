@@ -8,6 +8,10 @@ class Character {
     private dire: number;
 
     constructor() {
+        this.init();
+    }
+
+    public init(): void {
         this.x = 0;
         this.y = 0;
         this.targetX = 0;
