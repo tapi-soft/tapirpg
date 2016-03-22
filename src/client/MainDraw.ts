@@ -4,9 +4,11 @@ class MainDraw {
     private imageMap;
     private imageChara = [];
     private myself: ClientMyself;
+    private player: ClientPlayerList;
 
-    constructor(public _myself: ClientMyself) {
+    constructor(public _myself: ClientMyself, public _player: ClientPlayerList) {
         this.myself = _myself;
+        this.player = _player;
         this.imageMap = new Image();
         this.imageMap.src = "image/map/map1.png";
         for (var n = 0; n < 8; n++) {
@@ -18,6 +20,7 @@ class MainDraw {
     private draw(context: any): void {
         this.drawMap(context);
         this.drawMyself(context);
+        this.drawPlayer(context);
     }
 
     private drawMap(context: any): void {
@@ -36,6 +39,17 @@ class MainDraw {
             this.imageChara[this.myself.getDire()],
             this.getCenterPosX() - this.imageChara[0].width / 2,
             this.getCenterPosY() - this.imageChara[0].height / 2);
+    }
+
+    private drawPlayer(context: any): void {
+        for (var i = 0; i < 100; i++) {
+            if (this.player.isConnect(i) == 0) { continue; }
+            var playerData = this.player.getPlayerData(i);
+            context.drawImage(
+                this.imageChara[playerData.getDire()],
+                this.getBasePosX() - this.imageChara[0].width / 2 + playerData.getX(),
+                this.getBasePosY() - this.imageChara[0].height / 2 + playerData.getY());
+        }
     }
 
     public getCenterPosX(): number { return 1024 / 2; }

@@ -53,6 +53,19 @@ class ClientCharacter {
         return 0;
     }
 
+    public setData(data: any): void {
+        this.x = data.x;
+        this.y = data.y;
+        this.targetX = data.targetX;
+        this.targetY = data.targetY;
+        this.dire = data.dire;
+    }
+
+    public setTarget(data: any): void {
+        this.targetX = data.targetX;
+        this.targetY = data.targetY;
+    }
+
     public getX(): number { return this.x; }
     public getY(): number { return this.y; }
     public getTargetX(): number { return this.targetX; }

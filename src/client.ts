@@ -6,6 +6,7 @@ $(function() {
     var socket = io.connect();
     var mainDraw;
     var myself;
+    var player;
 
     window.onload = function() {
         init();
@@ -17,7 +18,8 @@ $(function() {
 
     function init() {
         myself = new ClientMyself();
-        mainDraw = new MainDraw(myself);
+        player = new ClientPlayerList();
+        mainDraw = new MainDraw(myself, player);
     }
 
     function draw() {
@@ -44,7 +46,10 @@ $(function() {
     socket.on('update', function(data) {
         for (var i = 0; i < 100; i++) {
             if (data.emitPlayerData[i]) {
-                console.log(data.emitPlayerData[i]);
+                if (player.isConnect(i) == 0) {
+                    player.connect(i, data.emitPlayerData[i]);
+                }
+                player.getPlayerData(i).setTarget(data.emitPlayerData[i]);
             }
         }
     });
