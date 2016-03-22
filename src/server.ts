@@ -60,7 +60,10 @@ function init() {
 }
 
 function update() {
-    
+    for (var i = 0; i < 100; i++) {
+        if (useId[i] == 0) { continue; }
+        serverPlayer[i].update();
+    }
 }
 
 function getEmptyId() {
