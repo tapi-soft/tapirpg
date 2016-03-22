@@ -30,6 +30,7 @@ $(function() {
 
     function update() {
         myself.update();
+        player.update();
     }
 
     $("canvas").mousedown(function(e) {

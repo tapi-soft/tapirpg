@@ -11,6 +11,13 @@ class ClientPlayerList {
         }
     }
 
+    public update(): void {
+        for (var i = 0; i < 100; i++) {
+            if (this.isConnectFlag[i] == 0) { continue; }
+            this.player[i].update();
+        }
+    }
+
     public getPlayerData(n: number): ClientPlayer {
         return this.player[n];
     }
