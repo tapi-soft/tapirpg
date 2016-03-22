@@ -35,13 +35,13 @@ io2.sockets.on('connection', function(socket) {
             if (id == i) { continue; }
             var playerData = new EmitPlayerData();
             playerData.setData(serverPlayer[i]);
-            emitData.addPlayerData(playerData);
+            emitData.setPlayerData(i, playerData);
         }
         for (var i = 0; i < MAX_MONSTER; i++) {
             if (useMonsterId[i] == 0) { continue; }
             var monsterData = new EmitMonsterData();
             monsterData.setData(serverMonster[i]);
-            emitData.addMonsterData(monsterData);
+            emitData.setMonsterData(i, monsterData);
         }
         socket.emit('update', emitData);
     }, 1000);

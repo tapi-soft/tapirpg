@@ -11,13 +11,13 @@ class EmitData {
         this.monsterNum = 0;
     }
 
-    public addPlayerData(data: EmitPlayerData) {
-        this.emitPlayerData[this.playerNum] = data;
+    public setPlayerData(n: number, data: EmitPlayerData) {
+        this.emitPlayerData[n] = data;
         this.playerNum++;
     }
 
-    public addMonsterData(data: EmitMonsterData) {
-        this.emitMonsterData[this.monsterNum] = data;
+    public setMonsterData(n: number, data: EmitMonsterData) {
+        this.emitMonsterData[n] = data;
         this.monsterNum++;
     }
 }

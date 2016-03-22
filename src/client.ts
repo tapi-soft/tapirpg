@@ -54,6 +54,8 @@ $(function() {
                     player.connect(i, data.emitPlayerData[i]);
                 }
                 player.getPlayerData(i).setTarget(data.emitPlayerData[i]);
+            } else {
+                player.disconnect(i);
             }
         }
         for (var i = 0; i < 100; i++) {
@@ -62,6 +64,8 @@ $(function() {
                     monster.connect(i, data.emitMonsterData[i]);
                 }
                 monster.getMonster(i).setTarget(data.emitMonsterData[i]);
+            } else {
+                monster.disconnect(i);
             }
         }
     });
