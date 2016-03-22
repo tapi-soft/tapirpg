@@ -62,7 +62,6 @@ $(function() {
                     monster.connect(i, data.emitMonsterData[i]);
                 }
                 monster.getMonster(i).setTarget(data.emitMonsterData[i]);
-                console.log(data.emitMonsterData[i]);
             }
         }
     });

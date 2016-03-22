@@ -19,8 +19,9 @@ class ServerMonster extends ServerCharacter {
             var y = this.getTargetY() + Math.random() * 500 - 250;
             if (x < 0) { x = 0; }
             if (y < 0) { y = 0; }
-            this.setTargetX(x);
-            this.setTargetY(y);
+            if (x > 1000) { x = 1000; }
+            if (y > 600) { y = 600; }
+            this.setTarget({ targetX: x, targetY: y });
         }
     }
 

@@ -55,8 +55,10 @@ class Character {
     }
 
     public setTarget(data: any): void {
+        if (this.targetX == data.targetX && this.targetY == data.targetY) { return; }
         this.targetX = data.targetX;
         this.targetY = data.targetY;
+        this.dire = this.calcDire();
     }
 
     public setX(_x: number): void { this.x = _x; }
