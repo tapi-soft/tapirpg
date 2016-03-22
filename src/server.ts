@@ -36,6 +36,11 @@ io2.sockets.on('connection', function(socket) {
         }
         socket.emit('update', emitData);
     }, 1000);
+
+    socket.on('move', function(data) {
+        serverPlayer[id].setTargetX(data.targetX);
+        serverPlayer[id].setTargetY(data.targetY);
+    });
 });
 
 http.listen(30000, function() {
