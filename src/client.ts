@@ -16,7 +16,7 @@ $(function() {
     }
 
     function init() {
-        myself = new Myself();
+        myself = new ClientMyself();
         mainDraw = new MainDraw(myself);
     }
 
@@ -34,7 +34,7 @@ $(function() {
         var rect = e.target.getBoundingClientRect();
         var mousex = Math.floor(e.clientX - rect.left);
         var mousey = Math.floor(e.clientY - rect.top);
-        myself.clickProcess(mousex, mousey);
+        myself.changeTarget(mousex, mousey);
     });
 
     socket.on('update', function(data) {

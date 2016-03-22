@@ -1,6 +1,6 @@
 /// <reference path="./main.d.ts"/>
 
-class Myself {
+class ClientCharacter {
     private x: number;
     private y: number;
     private targetX: number;
@@ -28,7 +28,7 @@ class Myself {
         this.y += dy;
     }
 
-    public clickProcess(mousex: number, mousey: number): void {
+    public changeTarget(mousex: number, mousey: number): void {
         this.targetX = this.x + mousex - (1024 / 2);
         this.targetY = this.y + mousey - (600 / 2);
         this.dire = this.calcDire();

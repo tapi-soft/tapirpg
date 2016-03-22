@@ -3,9 +3,9 @@
 class MainDraw {
     private imageMap;
     private imageChara = [];
-    private myself: Myself;
+    private myself: ClientMyself;
 
-    constructor(public _myself: Myself) {
+    constructor(public _myself: ClientMyself) {
         this.myself = _myself;
         this.imageMap = new Image();
         this.imageMap.src = "image/map/map1.png";
