@@ -28,8 +28,9 @@ class MainDraw {
             for (var x = 0; x < 20; x++) {
                 context.drawImage(
                     this.imageMap,
-                    x * this.imageMap.width + this.getBasePosX(),
-                    y * this.imageMap.height + this.getBasePosY());
+                    Math.floor(x * this.imageMap.width + this.getBasePosX()),
+                    Math.floor(y * this.imageMap.height + this.getBasePosY())
+                );
             }
         }
     }
@@ -37,8 +38,9 @@ class MainDraw {
     private drawMyself(context: any): void {
         context.drawImage(
             this.imageChara[this.myself.getDire()],
-            this.getCenterPosX() - this.imageChara[0].width / 2,
-            this.getCenterPosY() - this.imageChara[0].height / 2);
+            Math.floor(this.getCenterPosX() - this.imageChara[0].width / 2),
+            Math.floor(this.getCenterPosY() - this.imageChara[0].height / 2)
+        );
     }
 
     private drawPlayer(context: any): void {
@@ -47,8 +49,9 @@ class MainDraw {
             var playerData = this.player.getPlayerData(i);
             context.drawImage(
                 this.imageChara[playerData.getDire()],
-                this.getBasePosX() - this.imageChara[0].width / 2 + playerData.getX(),
-                this.getBasePosY() - this.imageChara[0].height / 2 + playerData.getY());
+                Math.floor(this.getBasePosX() - this.imageChara[0].width / 2 + playerData.getX()),
+                Math.floor(this.getBasePosY() - this.imageChara[0].height / 2 + playerData.getY())
+            );
         }
     }
 
