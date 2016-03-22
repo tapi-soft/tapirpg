@@ -6,33 +6,42 @@ var http = require('http').Server(app);
 var io2 = require('socket.io')(http);
 
 const MAX_PLAYER = 100;
-var useId = [];
+const MAX_MONSTER = 100;
+var usePlayerId = [];
+var useMonsterId = [];
 var serverPlayer = [];
+var serverMonster = [];
 
 app.use(express.static(__dirname + '/../client'));
 
 io2.sockets.on('connection', function(socket) {
-    var id = getEmptyId();
+    var id = getEmptyPlayerId();
     if (id == -1) {
 
     } else {
         console.log("id: "+id+" connected");
-        useId[id] = 1;
+        usePlayerId[id] = 1;
     }
 
     socket.on('disconnect', function() {
         console.log("id: "+id+" disconnected");
-        useId[id] = 0;
+        usePlayerId[id] = 0;
     });
 
     setInterval(function() {
         var emitData = new EmitData();
         for (var i = 0; i < MAX_PLAYER; i++) {
-            if (useId[i] == 0) { continue; }
+            if (usePlayerId[i] == 0) { continue; }
             if (id == i) { continue; }
             var playerData = new EmitPlayerData();
             playerData.setData(serverPlayer[i]);
             emitData.addPlayerData(playerData);
+        }
+        for (var i = 0; i < MAX_MONSTER; i++) {
+            if (useMonsterId[i] == 0) { continue; }
+            var monsterData = new EmitMonsterData();
+            monsterData.setData(serverMonster[i]);
+            emitData.addMonsterData(monsterData);
         }
         socket.emit('update', emitData);
     }, 1000);
@@ -54,21 +63,41 @@ setInterval(function() {
 
 function init() {
     for (var i = 0; i < MAX_PLAYER; i++) {
-        useId[i] = 0;
+        usePlayerId[i] = 0;
         serverPlayer[i] = new ServerPlayer();
+    }
+    for (var i = 0; i < MAX_MONSTER; i++) {
+        useMonsterId[i] = 0;
+        serverMonster[i] = new ServerMonster();
     }
 }
 
 function update() {
-    for (var i = 0; i < 100; i++) {
-        if (useId[i] == 0) { continue; }
+    for (var i = 0; i < MAX_PLAYER; i++) {
+        if (usePlayerId[i] == 0) { continue; }
         serverPlayer[i].update();
+    }
+    for (var i = 0; i < MAX_MONSTER; i++) {
+        if (useMonsterId[i] == 0) { continue; }
+        serverMonster[i].update();
     }
 }
 
-function getEmptyId() {
+function getEmptyPlayerId() {
     for (var i = 0; i < MAX_PLAYER; i++) {
-        if (useId[i] == 0) { return i; }        
+        if (usePlayerId[i] == 0) { return i; }        
     }
     return -1;
+}
+
+function getEmptyMonsterId() {
+    for (var i = 0; i < MAX_MONSTER; i++) {
+        if (useMonsterId[i] == 0) { return i; }
+    }
+    return -1;
+}
+
+function createMonster() {
+    var id = getEmptyMonsterId();
+    useMonsterId[id] = 1;
 }
