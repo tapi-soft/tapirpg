@@ -72,5 +72,9 @@ $(function() {
 
     $(window).keydown(function(e) {
         console.log(e.keyCode);
+        // Q
+        if (e.keyCode == 81) {
+            console.log("やったぜ。");
+        }
     });
 })

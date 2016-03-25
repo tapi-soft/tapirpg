@@ -6,6 +6,7 @@ class Character {
     private targetX: number;
     private targetY: number;
     private dire: number;
+    private action: number;
 
     constructor() {
         this.init();
@@ -17,9 +18,14 @@ class Character {
         this.targetX = 0;
         this.targetY = 0;
         this.dire = 0;
+        this.action = 0;
     }
 
     public update(): void {
+        this.updateMove();
+    }
+
+    public updateMove(): void {
         var dx = this.targetX - this.x;
         var dy = this.targetY - this.y;
         if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) { return; }
@@ -31,6 +37,7 @@ class Character {
         this.x += dx;
         this.y += dy;
     }
+
     public calcDire(): number {
         var x1: number = this.x;
         var y1: number = this.y;
@@ -70,10 +77,12 @@ class Character {
     public setTargetX(_targetX: number): void { this.targetX = _targetX; }
     public setTargetY(_targetY: number): void { this.targetY = _targetY; }
     public setDire(_dire: number): void { this.dire = _dire; }
+    public setAction(_action: number): void { this.action = _action; }
 
     public getX(): number { return this.x; }
     public getY(): number { return this.y; }
     public getTargetX(): number { return this.targetX; }
     public getTargetY(): number { return this.targetY; }
     public getDire(): number { return this.dire; }
+    public getAction(): number { return this.action; }
 }
