@@ -5,3 +5,4 @@
 /// <reference path="./ClientPlayerList.ts"/>
 /// <reference path="./ClientMonster.ts"/>
 /// <reference path="./ClientMonsterList.ts"/>
+/// <reference path="./ClientEffect.ts"/>
