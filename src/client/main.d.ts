@@ -6,3 +6,4 @@
 /// <reference path="./ClientMonster.ts"/>
 /// <reference path="./ClientMonsterList.ts"/>
 /// <reference path="./ClientEffect.ts"/>
+/// <reference path="./ClientEffectList.ts"/>
